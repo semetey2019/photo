@@ -1,71 +1,115 @@
 import 'package:flutter/material.dart';
-import 'package:photo/features/auth/presentation/pages/login_page.dart';
-import 'package:photo/features/auth/presentation/pages/register_page.dart';
+
 import 'package:photo/features/main/presentation/pages/home/home_page.dart';
 
-import '../../../auth/presentation/pages/main_screen.dart';
-import '../../../auth/presentation/pages/register_policy.dart';
-
-class BottomWidget extends StatefulWidget {
-  const BottomWidget({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<BottomWidget> createState() => _BottomWidgetState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _BottomWidgetState extends State<BottomWidget> {
+class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
-  final screens = [
-    LoggedOutScreen(),
-    const RegisterPage(),
-    const RegistrePolicy(),
-    const LoginPage(),
-    const DiscoverPage(),
-  ];
+
+  PageController pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(
+      initialPage: _currentIndex,
+      keepPage: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.amber,
-        body: IndexedStack(
-          index: _currentIndex,
-          children: screens,
+      body: SafeArea(
+        child: PageView(
+          controller: pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          onPageChanged: (value) {
+            _currentIndex = value;
+            setState(() {});
+          },
+          children: const [
+            DiscoverPage(),
+            Scaffold(),
+            Scaffold(),
+            Scaffold(),
+            Scaffold(),
+          ],
         ),
-        bottomNavigationBar: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/navigate/new.png",
+              height: 40,
+            ),
+            label: '',
           ),
-          child: BottomNavigationBar(
-              selectedItemColor: Colors.green,
-              unselectedItemColor: Colors.grey,
-              currentIndex: _currentIndex,
-              onTap: (int newIndex) {
-                setState(() {
-                  _currentIndex = newIndex;
-                });
-              },
-              items: const [
-                BottomNavigationBarItem(
-                  label: "fdhfh",
-                  icon: Icon(Icons.abc),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: '',
+          ),
+          const BottomNavigationBarItem(
+            icon: SizedBox(
+              height: 40,
+              width: 70,
+              child: DecoratedBox(
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
                 ),
-                BottomNavigationBarItem(
-                  label: "fdhfh",
-                  icon: Icon(Icons.abc),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xffff00d6), Color(0xffff4c00)],
+                  ),
                 ),
-                BottomNavigationBarItem(
-                  label: "hreh",
-                  icon: Icon(Icons.abc),
-                ),
-                BottomNavigationBarItem(
-                  label: "Home",
-                  icon: Icon(Icons.abc),
-                ),
-                BottomNavigationBarItem(
-                  label: "Home",
-                  icon: Icon(Icons.abc),
-                ),
-              ]),
-        ));
+              ),
+            ),
+            // Пустой элемент для центральной кнопки
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/navigate/comment.png",
+              height: 40,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/navigate/bell.png",
+              height: 40,
+            ),
+            label: '',
+          ),
+        ],
+        onTap: (index) {
+          _onTabTapped(index);
+        },
+      ),
+    );
+  }
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 10),
+      curve: Curves.bounceIn,
+    );
   }
 }

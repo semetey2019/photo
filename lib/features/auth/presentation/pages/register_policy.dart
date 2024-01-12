@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo/features/main/presentation/pages/home/home_page.dart';
+import 'package:photo/features/main/presentation/widgets/button_bar_widget.dart';
 
 import '../../../../config/helpers/validators.dart';
 import '../widgets/button_widget.dart';
@@ -83,12 +84,13 @@ class _RegistrePolicyState extends State<RegistrePolicy> {
               ButtonWidget(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => DiscoverPage()));
+                      MaterialPageRoute(builder: (_) => const MainPage()));
                 },
                 color: const BorderSide(color: Colors.black),
                 text: "SIGN UP",
                 backgroundColor: Colors.black,
                 minimumSize: const Size(double.infinity, 52),
+                textColor: TextStyle(color: Colors.white),
               ),
               const SizedBox(height: 32),
               const Text(

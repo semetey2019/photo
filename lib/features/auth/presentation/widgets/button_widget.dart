@@ -24,8 +24,7 @@ class ButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyle(
-              color: Colors.white, fontSize: 13, fontWeight: FontWeight.w900),
+          style: textColor,
         ),
         style: ElevatedButton.styleFrom(
           // shadowColor: AppColors.backgroundColor,
@@ -36,7 +35,6 @@ class ButtonWidget extends StatelessWidget {
           side: const BorderSide(width: 2, color: Colors.black),
           elevation: 1,
           minimumSize: minimumSize,
-          textStyle: textColor,
         ));
   }
 }

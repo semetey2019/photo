@@ -31,46 +31,27 @@ class LoggedOutScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 38,
-                                  width: 38,
-                                  margin: const EdgeInsets.only(
-                                    top: 2,
-                                    bottom: 13,
-                                  ),
-                                  child: const Stack(
-                                    alignment: Alignment.center,
-                                    children: [],
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset("assets/images/union1.png"),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 20),
-                                      child: Image.asset(
-                                          "assets/images/union.png"),
-                                    ),
-                                    Image.asset(
-                                      "assets/images/photo.png",
-                                      height: 54,
-                                      width: 148,
-                                    )
-                                  ],
-                                ),
-                              ],
+                      Align(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 38,
+                              width: 38,
+                              margin: const EdgeInsets.only(
+                                top: 2,
+                                bottom: 13,
+                              ),
+                              child: const Stack(
+                                alignment: Alignment.center,
+                                children: [],
+                              ),
                             ),
-                          ),
-                        ],
+                            Image.asset("assets/images/photo2.png"),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 294),
                       Row(
@@ -106,79 +87,74 @@ class LoggedOutScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      ColoredBox(
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 167,
-                              height: 52,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  border: const Border(
-                                    top: BorderSide(
-                                        width: 3, color: Colors.black),
-                                    left: BorderSide(
-                                        width: 3, color: Colors.black),
-                                    right: BorderSide(
-                                        width: 3, color: Colors.black),
-                                    bottom: BorderSide(
-                                        width: 3, color: Colors.black),
+                      SizedBox(
+                        height: 50,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: Colors.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 167,
+                                height: 52,
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 3),
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(6),
                                   ),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                child: Center(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  const LoginPage()));
-                                    },
-                                    child: const Text(
-                                      "LOG IN",
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.black),
+                                  child: Center(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    const LoginPage()));
+                                      },
+                                      child: const Text(
+                                        "LOG IN",
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w900,
+                                            color: Colors.black),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 9),
-                            SizedBox(
-                              width: 167,
-                              height: 52,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                child: Center(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  const RegisterPage()));
-                                    },
-                                    child: const Text(
-                                      "REGISTER",
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white),
+                              const SizedBox(width: 9),
+                              SizedBox(
+                                width: 167,
+                                height: 52,
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: Center(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    const RegisterPage()));
+                                      },
+                                      child: const Text(
+                                        "REGISTER",
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w900,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
