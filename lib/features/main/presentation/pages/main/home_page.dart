@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:photo/features/auth/presentation/widgets/button_widget.dart';
 import '../../../../auth/presentation/widgets/custom_view.dart';
-import '../../widgets/button_bar_widget.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({

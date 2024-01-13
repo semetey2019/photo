@@ -8,6 +8,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final TextInputType? inputType;
   final Function(String)? onChanged;
   final bool? isError;
+  final TextStyle? hintStyle;
 
   const TextFormFieldWidget({
     super.key,
@@ -18,6 +19,7 @@ class TextFormFieldWidget extends StatefulWidget {
     this.inputType,
     this.onChanged,
     this.isError,
+    this.hintStyle,
   });
 
   @override
@@ -62,11 +64,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
           fillColor: Colors.white,
           hintText: widget.hinText,
           errorStyle: const TextStyle(fontSize: 0),
-          hintStyle: TextStyle(
-            fontSize: 15,
-            color: Colors.black,
-            fontWeight: FontWeight.w400,
-          ),
+          hintStyle: TextStyle(),
         ));
   }
 }

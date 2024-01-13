@@ -67,6 +67,11 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 32),
               TextFormFieldWidget(
+                hintStyle: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
                 hinText: "jane@example.com",
                 isError: isValidateEmail,
                 validator: (value) {
@@ -104,6 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 },
                 color: const BorderSide(color: Colors.black),
                 text: "NEXT",
+                textColor: TextStyle(color: Colors.white),
                 backgroundColor: Colors.black,
                 minimumSize: const Size(double.infinity, 52),
               )

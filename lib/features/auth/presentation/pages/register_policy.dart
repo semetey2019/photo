@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo/features/main/presentation/pages/home/home_page.dart';
 import 'package:photo/features/main/presentation/widgets/button_bar_widget.dart';
-
 import '../../../../config/helpers/validators.dart';
 import '../widgets/button_widget.dart';
-
 import '../widgets/text_form_widget.dart';
 
 class RegistrePolicy extends StatefulWidget {
@@ -67,6 +64,11 @@ class _RegistrePolicyState extends State<RegistrePolicy> {
               const SizedBox(height: 32),
               TextFormFieldWidget(
                 hinText: "the_jane",
+                hintStyle: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
                 isError: isValidateEmail,
                 validator: (value) {
                   if (isValidPhoneNumber(value!) == null) {

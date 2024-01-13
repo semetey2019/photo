@@ -67,6 +67,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 32),
               TextFormFieldWidget(
                 hinText: "jane@example.com",
+                hintStyle: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
                 isError: isValidateEmail,
                 validator: (value) {
                   if (isValidPhoneNumber(value!) == null) {
@@ -105,6 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 color: const BorderSide(color: Colors.black),
                 text: "LOG IN",
+                textColor: const TextStyle(color: Colors.white),
                 backgroundColor: Colors.black,
                 minimumSize: const Size(double.infinity, 52),
               )

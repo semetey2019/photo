@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:photo/features/main/presentation/pages/home/home_page.dart';
+import 'package:photo/features/main/presentation/pages/main/home_page.dart';
+import 'package:photo/features/main/presentation/pages/search/search_photo.dart';
+
+import '../pages/home/profile/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -36,10 +39,10 @@ class _MainPageState extends State<MainPage> {
           },
           children: const [
             DiscoverPage(),
+            SearchPhotoPage(),
             Scaffold(),
             Scaffold(),
-            Scaffold(),
-            Scaffold(),
+            ProfilePage(),
           ],
         ),
       ),
