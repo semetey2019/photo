@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo/features/main/presentation/pages/home/chat/chat_page.dart';
 
 import 'package:photo/features/main/presentation/pages/main/home_page.dart';
 import 'package:photo/features/main/presentation/pages/search/search_photo.dart';
@@ -41,7 +42,7 @@ class _MainPageState extends State<MainPage> {
             DiscoverPage(),
             SearchPhotoPage(),
             Scaffold(),
-            Scaffold(),
+            ChatPage(),
             ProfilePage(),
           ],
         ),
