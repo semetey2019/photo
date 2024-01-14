@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../auth/presentation/widgets/custom_view.dart';
+import '../../../../../auth/presentation/widgets/custom_view.dart';
 
 class FullScreenImage extends StatefulWidget {
   const FullScreenImage({super.key});
