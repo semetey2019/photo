@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:photo/features/auth/presentation/widgets/text_form_widget.dart';
 
-import '../../../../auth/presentation/widgets/button_widget.dart';
+import '../auth/presentation/widgets/button_widget.dart';
 
 class SearchPhotoPage extends StatefulWidget {
   const SearchPhotoPage({super.key});

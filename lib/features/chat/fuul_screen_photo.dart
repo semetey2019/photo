@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../auth/presentation/widgets/custom_view.dart';
+import '../auth/presentation/widgets/custom_view.dart';
 
 class FullScreenImage extends StatefulWidget {
-  const FullScreenImage({super.key});
-
+  const FullScreenImage({super.key, required this.index});
+  final int index;
   @override
   State<FullScreenImage> createState() => _FullScreenImageState();
 }
-
-int i = 1;
 
 class _FullScreenImageState extends State<FullScreenImage> {
   @override
@@ -22,7 +20,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
             child: Stack(
               children: [
                 Image.asset(
-                  "assets/discovery/0.png",
+                  "assets/discovery/${widget.index}.png",
                   height: 813,
                   fit: BoxFit.fill,
                 ),
@@ -33,7 +31,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomImageView(
-                        imagePath: "assets/ellipses/0.png",
+                        imagePath: "assets/ellipses/${widget.index}.png",
                         height: 28,
                         width: 28,
                         radius: BorderRadius.circular(14),

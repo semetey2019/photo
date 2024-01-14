@@ -104,12 +104,12 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 16),
               ButtonWidget(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LoginPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const LoginPage()));
                 },
                 color: const BorderSide(color: Colors.black),
                 text: "NEXT",
-                textColor: TextStyle(color: Colors.white),
+                textColor: const TextStyle(color: Colors.white),
                 backgroundColor: Colors.black,
                 minimumSize: const Size(double.infinity, 52),
               )

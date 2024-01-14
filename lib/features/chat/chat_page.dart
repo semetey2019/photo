@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo/features/main/presentation/pages/home/chat/discussion_page.dart';
+import 'package:photo/features/chat/discussion_page.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
