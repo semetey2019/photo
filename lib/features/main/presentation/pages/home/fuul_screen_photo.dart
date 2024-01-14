@@ -19,44 +19,43 @@ class _FullScreenImageState extends State<FullScreenImage> {
         children: [
           SizedBox(
             height: 813,
-            child: Column(
+            child: Stack(
               children: [
-                Stack(children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 16, top: 46, right: 16),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomImageView(
-                          imagePath: "assets/ellipses/${i}.png",
-                          height: 28,
-                          width: 28,
-                          radius: BorderRadius.circular(14),
-                        ),
-                        const SizedBox(width: 10),
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text("Ridhwan Nordin",
-                                style: TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.w700)),
-                            Text(
-                              "@ridzjcob",
+                Image.asset(
+                  "assets/discovery/0.png",
+                  height: 813,
+                  fit: BoxFit.fill,
+                ),
+                Positioned(
+                  top: 50,
+                  left: 25,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomImageView(
+                        imagePath: "assets/ellipses/0.png",
+                        height: 28,
+                        width: 28,
+                        radius: BorderRadius.circular(14),
+                      ),
+                      const SizedBox(width: 10),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text("Ridhwan Nordin",
                               style: TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.w400),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                                  fontSize: 13, fontWeight: FontWeight.w700)),
+                          Text(
+                            "@ridzjcob",
+                            style: TextStyle(
+                                fontSize: 11, fontWeight: FontWeight.w400),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  Image.asset(
-                    "assets/discovery/${i + 1}.png",
-                    fit: BoxFit.fill,
-                  ),
-                ]),
+                ),
               ],
             ),
           ),
