@@ -18,59 +18,100 @@ class _DiscussionPageState extends State<DiscussionPage> {
             Navigator.pop(context);
           },
         ),
-        title: const Text("James"),
+        title: const Text("James",
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w600,
+            )),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Container(
-            child: Row(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 32, 16),
+        child: Column(
+          children: [
+            Divider(
+              color: Colors.grey[400],
+            ),
+            Row(
               children: [
-                Expanded(
-                  child: TextFormField(
-                    minLines: 2,
-                    maxLines: 5,
-                    // controller: controller,
+                Image.asset("assets/profile/ellips1.png"),
+                const SizedBox(width: 16),
+                const SizedBox(
+                  height: 84,
+                  width: 299,
+                  child: DecoratedBox(
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          "Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips!",
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color(0x07000000),
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.send),
                 ),
               ],
             ),
-          ),
-        ],
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const SizedBox(
+                  height: 84,
+                  width: 299,
+                  child: DecoratedBox(
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Expanded(
+                          child: Text(
+                            "A fast 50mm like f1.8 would help with the bokeh. I’ve been using primes as they tend to get a bit sharper images.",
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color(0x07000000),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16),
+                Image.asset("assets/profile/ellips2.png"),
+              ],
+            ),
+            SizedBox(height: 24),
+            Row(
+              children: [
+                Image.asset("assets/profile/ellips1.png"),
+                const SizedBox(width: 16),
+                const SizedBox(
+                  height: 84,
+                  width: 299,
+                  child: DecoratedBox(
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(24),
+                        child: Text(
+                          'Thank you! That was very helpful! ',
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color(0x07000000),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
-  }
-}
-
-class SendContainer extends StatelessWidget {
-  const SendContainer({
-    Key? key,
-    this.onPressed,
-    this.controller,
-  }) : super(key: key);
-
-  final void Function()? onPressed;
-  final TextEditingController? controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16),
-      child: Row(
-        children: [
-          Image.asset("assets/profile/ellips2.png"),
-          TextFormField(
-            minLines: 2,
-            maxLines: 5,
-            controller: controller,
-          ),
-        ],
-      ),
-    ));
   }
 }

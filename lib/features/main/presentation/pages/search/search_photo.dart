@@ -27,45 +27,47 @@ class _SearchPhotoPageState extends State<SearchPhotoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Search",
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Comfortaa-Bold",
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Search",
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "Comfortaa-Bold",
+                    ),
                   ),
-                ),
-                const SizedBox(height: 32),
-                TextFormFieldWidget(
-                  hintStyle: TextStyle(
-                    color: Colors.grey[200],
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(height: 32),
+                  TextFormFieldWidget(
+                    hintStyle: TextStyle(
+                      color: Colors.grey[200],
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    hinText: "Search all photos",
                   ),
-                  hinText: "Search all photos",
-                ),
-                const SizedBox(height: 32),
-                const Text(
-                  "ALL RESULTS",
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w900,
+                  const SizedBox(height: 32),
+                  const Text(
+                    "ALL RESULTS",
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 24),
-                Expanded(
-                  child: GridView.builder(
+                  const SizedBox(height: 24),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 248,
                       crossAxisCount: 3,
                       mainAxisSpacing: 5.0,
                       crossAxisSpacing: 5,
@@ -78,10 +80,8 @@ class _SearchPhotoPageState extends State<SearchPhotoPage> {
                       );
                     },
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 32, bottom: 32),
-                  child: ButtonWidget(
+                  const SizedBox(height: 10),
+                  ButtonWidget(
                     onPressed: () {},
                     color: const BorderSide(color: Colors.black),
                     text: "SEE MORE",
@@ -89,8 +89,9 @@ class _SearchPhotoPageState extends State<SearchPhotoPage> {
                     textColor: const TextStyle(
                         color: Colors.black, fontWeight: FontWeight.w900),
                   ),
-                )
-              ],
+                  const SizedBox(height: 10),
+                ],
+              ),
             ),
           ),
         ),

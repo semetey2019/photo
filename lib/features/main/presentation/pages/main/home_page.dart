@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:photo/features/auth/presentation/widgets/button_widget.dart';
+import 'package:photo/features/main/presentation/pages/home/fuul_screen_photo.dart';
 import '../../../../auth/presentation/widgets/custom_view.dart';
 
 class DiscoverPage extends StatelessWidget {
@@ -12,105 +13,110 @@ class DiscoverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, top: 32, right: 16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Discover",
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: "Comfortaa-Bold",
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, top: 32, right: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Discover",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Comfortaa-Bold",
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "WHAT’S NEW TODAY",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w900,
+                const SizedBox(height: 10),
+                const Text(
+                  "WHAT’S NEW TODAY",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  children: [
-                    for (int i = 1; i < 5; i++)
-                      Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                height: 300,
-                                width: 300,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/discovery/$i.png",
-                                      ),
-                                      fit: BoxFit.cover),
-                                ),
-                                margin: const EdgeInsets.all(10),
-                              ),
-                              Positioned(
-                                top: 180,
-                                child: Row(
-                                  children: [
-                                    CustomImageView(
-                                      imagePath: "assets/ellipses/$i.png",
-                                      height: 28,
-                                      width: 28,
-                                      radius: BorderRadius.circular(14),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text("Ridhwan Nordin",
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w700)),
-                                          Text(
-                                            "@ridzjcob",
-                                            style: TextStyle(
-                                                fontSize: 11,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 387,
+                  width: double.infinity,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemBuilder: (context, i) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: 340,
+                          height: 340,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => FullScreenImage()));
+                            },
+                            child: Image.asset(
+                              "assets/discovery/${i}.png",
+                              width: 340,
+                              height: 340,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ],
-                      ),
-                  ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomImageView(
+                              imagePath: "assets/ellipses/${i}.png",
+                              height: 28,
+                              width: 28,
+                              radius: BorderRadius.circular(14),
+                            ),
+                            const SizedBox(width: 10),
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text("Ridhwan Nordin",
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w700)),
+                                Text(
+                                  "@ridzjcob",
+                                  style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    separatorBuilder: (context, idx) =>
+                        const SizedBox(width: 10),
+                    itemCount: 4,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 50),
-              const Text(
-                "BROWSE ALL",
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w900,
+                const SizedBox(height: 50),
+                const Text(
+                  "BROWSE ALL",
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: MasonryGridView.builder(
+                const SizedBox(height: 10),
+                MasonryGridView.builder(
                   shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   gridDelegate:
                       const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2),
+                    crossAxisCount: 2,
+                  ),
                   itemCount: 9,
                   mainAxisSpacing: 4,
                   crossAxisSpacing: 4,
@@ -122,34 +128,20 @@ class DiscoverPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 32, bottom: 32),
-                child: ButtonWidget(
+                const SizedBox(height: 10),
+                ButtonWidget(
                   onPressed: () {},
                   color: const BorderSide(color: Colors.black),
                   text: "SEE MORE",
                   minimumSize: const Size(double.infinity, 52),
                   textColor: const TextStyle(color: Colors.black),
                 ),
-              )
-            ],
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-var photos = <String>[
-  'assets/photo/ph0.png',
-  'assets/photo/ph1.png',
-  'assets/photo/ph2.png',
-  'assets/photo/ph3.png',
-  'assets/photo/ph4.png',
-  'assets/photo/ph5.png',
-  'assets/photo/ph6.png',
-  'assets/photo/ph7.png',
-  'assets/photo/ph8.png',
-  'assets/photo/ph9.png',
-];

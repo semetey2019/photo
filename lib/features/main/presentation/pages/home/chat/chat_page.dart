@@ -21,9 +21,8 @@ class _ChatPageState extends State<ChatPage> {
           Expanded(
             child: ListView.separated(
               itemCount: 4,
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(
-                height: 8,
+              separatorBuilder: (BuildContext context, int index) => Divider(
+                color: Colors.grey.withOpacity(.6),
               ),
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
