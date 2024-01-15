@@ -56,7 +56,7 @@ class _DiscussionPageState extends State<DiscussionPage> {
                 ),
               ],
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -80,11 +80,11 @@ class _DiscussionPageState extends State<DiscussionPage> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Image.asset("assets/profile/ellips2.png"),
               ],
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               children: [
                 Image.asset("assets/profile/ellips1.png"),

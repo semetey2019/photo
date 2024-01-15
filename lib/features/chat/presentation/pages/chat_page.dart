@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo/features/chat/discussion_page.dart';
+import 'package:photo/features/chat/data/datasourse/comment_data_sourse.dart';
+import 'package:photo/features/chat/data/models/comment_model.dart';
+import 'package:photo/features/chat/presentation/pages/discussion_page.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -9,6 +11,19 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  CommentModel? _comments;
+
+  void getData() async {
+    _comments = await ApiComments().getUsers();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +34,13 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.separated(
+            child:
+                //  _commentModel == null
+                //     ? const Center(
+                //         child: CircularProgressIndicator(),
+                //       )
+                //     :
+                ListView.separated(
               itemCount: 4,
               separatorBuilder: (BuildContext context, int index) => Divider(
                 color: Colors.grey.withOpacity(.6),
@@ -36,9 +57,11 @@ class _ChatPageState extends State<ChatPage> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   leading: Image.asset(
+                    // _comments!.id.toString()
                     'assets/profile/ellips${index + 1}.png',
                   ),
                   title: Text(
+                    // _comments!.name,
                     continentsList[index].name,
                     style: const TextStyle(
                       color: Color(0xFF1E1E1E),

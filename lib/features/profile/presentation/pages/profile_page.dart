@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:photo/features/auth/presentation/widgets/button_widget.dart';
 
+import '../../data/datasourse/profile_data_sourse.dart';
+import '../../data/model/post_model.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -10,11 +13,30 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  PostModel? _postModel;
+
+  void getData() async {
+    _postModel = await ApiPosts().getUsers();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
+        child:
+            //  _postModel == null
+            //     ? const Center(
+            //         child: CircularProgressIndicator(),
+            //       )
+            //     :
+            SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
             child: Column(
@@ -23,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Image.asset("assets/profile/girl.png"),
                 ),
                 const SizedBox(height: 32),
-                const Text(
+                Text(
                   "Jane",
                   style: TextStyle(
                     fontSize: 36,
