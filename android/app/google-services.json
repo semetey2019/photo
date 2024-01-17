@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "786056732146",
+    "project_id": "photo-f72a5",
+    "storage_bucket": "photo-f72a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786056732146:android:16069b4507c8354af69f6b",
+        "android_client_info": {
+          "package_name": "com.example.photo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGqRRUG4AgFd7bQWYJxD1jLDj0XMXbQso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

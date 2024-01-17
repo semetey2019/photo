@@ -11,17 +11,17 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  CommentModel? _comments;
-
-  void getData() async {
-    _comments = await ApiComments().getUsers();
-    setState(() {});
-  }
+  CommentModel? comments;
 
   @override
   void initState() {
     getData();
     super.initState();
+  }
+
+  void getData() async {
+    comments = await ApiComments().getUsers();
+    setState(() {});
   }
 
   @override
@@ -35,7 +35,7 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           Expanded(
             child:
-                //  _commentModel == null
+                //  _comments == null
                 //     ? const Center(
                 //         child: CircularProgressIndicator(),
                 //       )
@@ -57,7 +57,7 @@ class _ChatPageState extends State<ChatPage> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   leading: Image.asset(
-                    // _comments!.id.toString()
+                    // _comments!.toString()
                     'assets/profile/ellips${index + 1}.png',
                   ),
                   title: Text(
@@ -70,6 +70,7 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                   ),
                   subtitle: Text(
+                    // _comments!.body,
                     continentsList[index].description,
                     style: const TextStyle(
                       fontSize: 13,

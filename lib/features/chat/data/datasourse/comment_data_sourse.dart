@@ -23,7 +23,7 @@ class ApiComments {
 //   List<Comments>? comments = [];
 //   final dio = Dio();
 
-//   Future<List<Comments>?> _comments() async {
+//   Future<List<Comments>?> commentsData() async {
 //     try {
 //       final res =
 //           await dio.get('https://jsonplaceholder.typicode.com/comments');
@@ -48,4 +48,23 @@ class ApiComments {
 //   }
 
 //   getUsers() {}
+// }
+
+// class Api {
+//   final String baseUrl = "https://jsonplaceholder.typicode.com";
+
+//   Future<List<CommentModel>> getUsers() async {
+//     final response = await http.get(Uri.parse('$baseUrl/comments'), headers: {
+//       "Access-Control-Allow-Origin": "*",
+//       'Content-Type': 'application/json',
+//       'Accept': '*/*'
+//     });
+
+//     if (response.statusCode == 200 || response.statusCode == 201) {
+//       final List chats = jsonDecode(utf8.decode(response.bodyBytes));
+//       return chats.map((e) => CommentModel.fromJson(e)).toList();
+//     } else {
+//       throw Exception("Server failre");
+//     }
+//   }
 // }
