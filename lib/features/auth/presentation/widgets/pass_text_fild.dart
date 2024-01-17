@@ -55,6 +55,7 @@ class _PassTextFieldState extends State<PassTextField> {
           borderSide: BorderSide(color: Colors.black, width: 2),
           borderRadius: BorderRadius.all(Radius.circular(2)),
         ),
+
         contentPadding: const EdgeInsets.all(16),
         filled: true,
         fillColor: Colors.white,

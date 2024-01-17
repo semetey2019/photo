@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:photo/features/main/presentation/pages/home/home.dart';
-import 'package:photo/features/main/presentation/widgets/button_bar_widget.dart';
 import '../../../../config/helpers/validators.dart';
 import '../../../../core/constants/snack_bar.dart';
 import '../widgets/button_widget.dart';
@@ -34,16 +33,16 @@ class _RegistrePolicyState extends State<RegistrePolicy> {
   void initState() {
     super.initState();
 
-    // isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
 
-    // if (!isEmailVerified) {
-    //   sendVerificationEmail();
+    if (!isEmailVerified) {
+      sendVerificationEmail();
 
-    //   timer = Timer.periodic(
-    //     const Duration(seconds: 3),
-    //     (_) => checkEmailVerified(),
-    //   );
-    // }
+      timer = Timer.periodic(
+        const Duration(seconds: 3),
+        (_) => checkEmailVerified(),
+      );
+    }
   }
 
   @override
@@ -144,8 +143,7 @@ class _RegistrePolicyState extends State<RegistrePolicy> {
                   const SizedBox(height: 16),
                   ButtonWidget(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => const MainPage()));
+                      canResendEmail ? sendVerificationEmail : null;
                     },
                     color: const BorderSide(color: Colors.black),
                     text: "SIGN UP",

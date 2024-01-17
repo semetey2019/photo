@@ -143,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   }
                 },
                 controller: emailController,
-                inputType: TextInputType.number,
+                inputType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
               PassTextField(
