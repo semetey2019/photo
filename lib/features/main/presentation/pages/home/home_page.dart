@@ -5,9 +5,7 @@ import 'package:photo/features/chat/presentation/pages/fuul_screen_photo.dart';
 import '../../../../auth/presentation/widgets/custom_view.dart';
 
 class DiscoverPage extends StatelessWidget {
-  const DiscoverPage({
-    super.key,
-  });
+  const DiscoverPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:photo/features/auth/presentation/pages/register_policy.dart';
 
 import '../../../../config/helpers/validators.dart';
+import '../../../../core/constants/snack_bar.dart';
 import '../widgets/button_widget.dart';
 import '../widgets/pass_text_fild.dart';
 import '../widgets/text_form_widget.dart';
@@ -32,9 +34,46 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  Future<void> login() async {
+    final navigator = Navigator.of(context);
+
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        // ignore: use_build_context_synchronously
+        SnackBarService.showSnackBar(
+          context,
+          'Неправильный email или пароль. Повторите попытку',
+          true,
+        );
+        return;
+      } else {
+        // ignore: use_build_context_synchronously
+        SnackBarService.showSnackBar(
+          context,
+          'Неизвестная ошибка! Попробуйте еще раз или обратитесь в поддержку.',
+          true,
+        );
+        return;
+      }
+    }
+
+    navigator.pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(

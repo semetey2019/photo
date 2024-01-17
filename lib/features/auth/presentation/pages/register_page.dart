@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:photo/features/auth/presentation/widgets/button_widget.dart';
+import 'package:photo/features/main/presentation/pages/home/home.dart';
 
 import '../../../../../config/helpers/validators.dart';
 import '../widgets/pass_text_fild.dart';
@@ -35,7 +37,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
@@ -45,7 +49,17 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            if ((user == null)) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DiscoverPage()),
+              );
+            }
           },
         ),
       ),
