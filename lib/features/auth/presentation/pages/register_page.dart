@@ -4,6 +4,7 @@ import 'package:photo/features/auth/presentation/widgets/button_widget.dart';
 import 'package:photo/features/main/presentation/pages/home/home.dart';
 
 import '../../../../../config/helpers/validators.dart';
+import '../../../../core/constants/snack_bar.dart';
 import '../widgets/pass_text_fild.dart';
 import '../widgets/text_form_widget.dart';
 import 'login_page.dart';
@@ -33,6 +34,50 @@ class _RegisterPageState extends State<RegisterPage> {
     passController.dispose();
 
     super.dispose();
+  }
+
+  Future<void> signUp() async {
+    final navigator = Navigator.of(context);
+
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+
+    if (passController.text != passController.text) {
+      SnackBarService.showSnackBar(
+        context,
+        'Пароли должны совпадать',
+        true,
+      );
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+
+      if (e.code == 'email-already-in-use') {
+        // ignore: use_build_context_synchronously
+        SnackBarService.showSnackBar(
+          context,
+          'Такой Email уже используется, повторите попытку с использованием другого Email',
+          true,
+        );
+        return;
+      } else {
+        // ignore: use_build_context_synchronously
+        SnackBarService.showSnackBar(
+          context,
+          'Неизвестная ошибка! Попробуйте еще раз или обратитесь в поддержку.',
+          true,
+        );
+      }
+    }
+
+    navigator.pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
   }
 
   @override
@@ -98,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   }
                 },
                 controller: emailController,
-                inputType: TextInputType.emailAddress,
+                inputType: TextInputType.number,
               ),
               const SizedBox(height: 16),
               PassTextField(

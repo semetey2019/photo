@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 controller: emailController,
-                inputType: TextInputType.emailAddress,
+                inputType: TextInputType.number,
               ),
               const SizedBox(height: 16),
               PassTextField(
