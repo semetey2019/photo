@@ -162,9 +162,19 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 16),
               ButtonWidget(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const LoginPage()));
+                onPressed: () async {
+                  bool isAuthorized = await FireBaseServices().authByEmail(
+                      email: emailController.text,
+                      password: passController.text);
+                  if (isAuthorized) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const LoginPage()));
+                  } else {
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(const SnackBar(content: Text('error')));
+                  }
                 },
                 color: const BorderSide(color: Colors.black),
                 text: "NEXT",
@@ -177,5 +187,27 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+}
+
+class ScaffoldMassanger {}
+
+class FireBaseServices {
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  Future<bool> authByEmail(
+      {required String email, required String password}) async {
+    bool isAuthorized = false;
+    try {
+      final result = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      isAuthorized = true;
+      print(result);
+    } catch (e) {
+      print(
+        e.toString(),
+      );
+    }
+    return isAuthorized;
   }
 }
